@@ -7,6 +7,7 @@
 class Application {
 public:
     Application();
+    ~Application();
     void run_loop();
 private:
     GLFWwindow* window;

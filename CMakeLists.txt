@@ -12,7 +12,7 @@ endif()
 
 find_package(OPENGL REQUIRED)
 
-set(SOURCE_FILES Source/main.cpp Source/glad.c Source/Application.cpp Source/Application.h)
+set(SOURCE_FILES Source/main.cpp Source/glad.c Source/Application.cpp Source/Application.h Source/Shader.cpp Source/Shader.h Source/Util/NonCopyable.h)
 add_executable(${CMAKE_PROJECT_NAME} ${SOURCE_FILES})
 include_directories(${GLFW_INCLUDE_DIR})
 include_directories(${OPENCL_INCLUDE_DIRS})

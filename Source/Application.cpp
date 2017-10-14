@@ -1,5 +1,7 @@
 #include "Application.h"
 
+#include "Shader.h"
+
 #include <stdexcept>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -36,12 +38,19 @@ Application::Application() {
 
 }
 
+Application::~Application() {
+    glfwTerminate();
+}
+
 void Application::run_loop() {
+
+
     // Game loop
     int last_ticks = 0,
             lag = 0;
-    while (/* TODO: Game not ended */) {
-        // TODO: Take controls
+    while (!glfwWindowShouldClose(window)) {
+        if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+            glfwSetWindowShouldClose(window, true);
 
         int current_ticks = glfwGetTime();
         int elapsed = current_ticks - last_ticks;
@@ -54,6 +63,10 @@ void Application::run_loop() {
             lag -= MS_PER_UPDATE;
         }
 
-        // TODO: Draw to window
+        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+        glClear(GL_COLOR_BUFFER_BIT);
+
+        glfwSwapBuffers(window);
+        glfwPollEvents();
     }
 }
